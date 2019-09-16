@@ -31,4 +31,17 @@ public class UserController {
             return "添加失败";
         }
     }
+
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    @ApiOperation(value = "更新用户信息", httpMethod = "PUT", produces = "application/json")
+    public Object updateUser(Integer id ,User user){
+        int i = userService.updateUser(id, user);
+        if(i > 0){
+            return "更新成功";
+        }else {
+            return "更新失败";
+        }
+    }
+
+
 }

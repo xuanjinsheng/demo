@@ -27,7 +27,19 @@ public class UserServiceImp implements UserService {
         user.setCreateTime(new Date());
         user.setUpdateTime(new Date());
         int i = userMapper.insertSelective(user);
-        System.out.println("宸宫" + i);
+        if(i > 0){
+            return 1;
+        }else {
+            return 0;
+        }
+    }
+
+    @Override
+    public int updateUser(Integer id, User user) {
+
+        user.setId(id);
+        user.setUpdateTime(new Date());
+        int i = userMapper.updateByPrimaryKeySelective(user);
         if(i > 0){
             return 1;
         }else {

@@ -19,4 +19,12 @@ public interface UserService {
      */
     int insertUser(User user);
 
+    /**
+     * 更新用户信息
+     * @param id
+     * @param user
+     * @return
+     */
+    int updateUser(Integer id , User user);
+
 }
