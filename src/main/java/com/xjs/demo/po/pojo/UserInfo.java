@@ -3,14 +3,12 @@ package com.xjs.demo.po.pojo;
 import java.io.Serializable;
 import java.util.Date;
 
-public class UserAddress implements Serializable {
+public class UserInfo implements Serializable {
     private Integer id;
 
     private Integer userId;
 
-    private String address;
-
-    private Date createTime;
+    private Date creatTime;
 
     private Date updateTime;
 
@@ -32,20 +30,12 @@ public class UserAddress implements Serializable {
         this.userId = userId;
     }
 
-    public String getAddress() {
-        return address;
+    public Date getCreatTime() {
+        return creatTime;
     }
 
-    public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreatTime(Date creatTime) {
+        this.creatTime = creatTime;
     }
 
     public Date getUpdateTime() {
@@ -64,8 +54,7 @@ public class UserAddress implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", userId=").append(userId);
-        sb.append(", address=").append(address);
-        sb.append(", createTime=").append(createTime);
+        sb.append(", creatTime=").append(creatTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

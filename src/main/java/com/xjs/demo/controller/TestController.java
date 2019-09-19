@@ -1,6 +1,7 @@
 package com.xjs.demo.controller;
 
 
+import com.xjs.demo.commontResult.ResultGenerator;
 import com.xjs.demo.po.pojo.User;
 import com.xjs.demo.service.UserService;
 import io.swagger.annotations.Api;
@@ -26,7 +27,7 @@ public class TestController {
     public Object userList(){
         List<User> user = userService.getList();
         logger.info("获取所有用户");
-        return user;
+        return ResultGenerator.genSuccessResult(user);
     }
 
 

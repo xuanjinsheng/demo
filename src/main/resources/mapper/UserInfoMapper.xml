@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xjs.demo.mybatis.mapper.UserAddressMapper">
-  <resultMap id="BaseResultMap" type="com.xjs.demo.po.pojo.UserAddress">
+<mapper namespace="com.xjs.demo.mybatis.mapper.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.xjs.demo.po.pojo.UserInfo">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -67,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_id, address, create_time, update_time
+    id, user_id, creat_time, update_time
   </sql>
-  <select id="selectByExample" parameterType="com.xjs.demo.po.pojo.UserAddressExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.xjs.demo.po.pojo.UserInfoExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from user_address
+    from user_info
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,27 +85,27 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from user_address
+    from user_info
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user_address
+    delete from user_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.xjs.demo.po.pojo.UserAddressExample">
-    delete from user_address
+  <delete id="deleteByExample" parameterType="com.xjs.demo.po.pojo.UserInfoExample">
+    delete from user_info
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.xjs.demo.po.pojo.UserAddress">
-    insert into user_address (id, user_id, address, 
-      create_time, update_time)
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="com.xjs.demo.po.pojo.UserInfo">
+    insert into user_info (id, user_id, creat_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{creatTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.xjs.demo.po.pojo.UserAddress">
-    insert into user_address
+  <insert id="insertSelective" parameterType="com.xjs.demo.po.pojo.UserInfo">
+    insert into user_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -114,11 +113,8 @@
       <if test="userId != null">
         user_id,
       </if>
-      <if test="address != null">
-        address,
-      </if>
-      <if test="createTime != null">
-        create_time,
+      <if test="creatTime != null">
+        creat_time,
       </if>
       <if test="updateTime != null">
         update_time,
@@ -131,25 +127,22 @@
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="address != null">
-        #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="creatTime != null">
+        #{creatTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.xjs.demo.po.pojo.UserAddressExample" resultType="java.lang.Long">
-    select count(*) from user_address
+  <select id="countByExample" parameterType="com.xjs.demo.po.pojo.UserInfoExample" resultType="java.lang.Long">
+    select count(*) from user_info
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update user_address
+    update user_info
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -157,11 +150,8 @@
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
-      <if test="record.address != null">
-        address = #{record.address,jdbcType=VARCHAR},
-      </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      <if test="record.creatTime != null">
+        creat_time = #{record.creatTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.updateTime != null">
         update_time = #{record.updateTime,jdbcType=TIMESTAMP},
@@ -172,27 +162,23 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update user_address
+    update user_info
     set id = #{record.id,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=INTEGER},
-      address = #{record.address,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      creat_time = #{record.creatTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xjs.demo.po.pojo.UserAddress">
-    update user_address
+  <update id="updateByPrimaryKeySelective" parameterType="com.xjs.demo.po.pojo.UserInfo">
+    update user_info
     <set>
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="address != null">
-        address = #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="creatTime != null">
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
@@ -200,11 +186,10 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.xjs.demo.po.pojo.UserAddress">
-    update user_address
+  <update id="updateByPrimaryKey" parameterType="com.xjs.demo.po.pojo.UserInfo">
+    update user_info
     set user_id = #{userId,jdbcType=INTEGER},
-      address = #{address,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>

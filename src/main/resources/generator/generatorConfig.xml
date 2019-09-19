@@ -8,25 +8,27 @@
     <properties resource="generator/generator.properties"/>
     <classPathEntry location="${classPathEntry}"/>
 
-    <context id="DB2Tables" targetRuntime="MyBatis3">
+    <context id="MysqlTables" targetRuntime="MyBatis3">
         <!-- 为模型生成序列化方法-->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <!-- 为生成的Java模型创建一个toString方法 -->
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
         <!--生成mapper.xml时覆盖原文件-->
-<!--        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />-->
-<!--        <commentGenerator type="com.xjs.demo.commonGenerator.CommentGenerator">-->
-<!--            &lt;!&ndash; 是否去除自动生成的注释 true：是 ： false:否 &ndash;&gt;-->
-<!--            <property name="suppressAllComments" value="true"/>-->
-<!--            <property name="suppressDate" value="true"/>-->
-<!--            <property name="addRemarkComments" value="true"/>-->
-<!--        </commentGenerator>-->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
+        <commentGenerator >
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
         <!--数据库链接URL，用户名、密码 -->
         <jdbcConnection
                 driverClass="com.mysql.jdbc.Driver"
                 connectionURL="${jdbc.connectionURL}"
                 userId="${userId}"
                 password="${password}">
+            <!-- 设置 useInformationSchema 属性为 true -->
+            <property name="useInformationSchema" value="true" />
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>

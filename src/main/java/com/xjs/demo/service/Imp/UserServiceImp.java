@@ -46,4 +46,10 @@ public class UserServiceImp implements UserService {
             return 0;
         }
     }
+
+    @Override
+    public String getUserInfoByUsername(String username) {
+        User user = userMapper.selectByUsername(username);
+        return user.getPassword();
+    }
 }

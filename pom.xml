@@ -91,7 +91,12 @@
         <dependency>
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
-            <version>1.3.2</version>
+            <version>1.3.7</version>
+        </dependency>
+        <!-- Shiro控制器 -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 
@@ -105,7 +110,7 @@
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.3.2</version>
+                <version>1.3.7</version>
                 <configuration>
                     <!-- 扫描resources/generator目录下的generatorConfig.xml配置 -->
                     <configurationFile>
@@ -124,7 +129,7 @@
                     <dependency>
                         <groupId>org.mybatis.generator</groupId>
                         <artifactId>mybatis-generator-core</artifactId>
-                        <version>1.3.2</version>
+                        <version>1.3.7</version>
                     </dependency>
 
                 </dependencies>

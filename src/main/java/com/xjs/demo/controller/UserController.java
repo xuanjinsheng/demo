@@ -1,5 +1,6 @@
 package com.xjs.demo.controller;
 
+import com.xjs.demo.commontResult.ResultGenerator;
 import com.xjs.demo.po.pojo.User;
 import com.xjs.demo.service.UserService;
 import io.swagger.annotations.Api;
@@ -26,9 +27,9 @@ public class UserController {
         int i = userService.insertUser(user);
         logger.info("新增用户");
         if(i == 1){
-            return "添加成功";
+            return ResultGenerator.genSuccessResult("添加成功");
         }else {
-            return "添加失败";
+            return ResultGenerator.genFailResult("新增失败");
         }
     }
 
@@ -37,9 +38,9 @@ public class UserController {
     public Object updateUser(Integer id ,User user){
         int i = userService.updateUser(id, user);
         if(i > 0){
-            return "更新成功";
+            return ResultGenerator.genSuccessResult("更新成功");
         }else {
-            return "更新失败";
+            return ResultGenerator.genFailResult("更新失败");
         }
     }
 
