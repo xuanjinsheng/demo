@@ -76,8 +76,8 @@ public class User implements Serializable {
         sb.append(", username=").append(username);
         sb.append(", password=").append(password);
         sb.append(", phoneNumber=").append(phoneNumber);
-        sb.append(", createTime=").append(createTime);
-        sb.append(", updateTime=").append(updateTime);
+        sb.append(", createTime=").append(new Date(String.valueOf(createTime)));
+        sb.append(", updateTime=").append(new Date(String.valueOf(updateTime)));
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

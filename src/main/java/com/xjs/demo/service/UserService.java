@@ -11,7 +11,7 @@ public interface UserService {
      * 获取所有用户
      * @return
      */
-    List<User> getList();
+    List<User> getList(int pageNum, int pageSize);
 
     /**
      * 新增用户

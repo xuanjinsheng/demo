@@ -1,5 +1,6 @@
 package com.xjs.demo.service.Imp;
 
+import com.github.pagehelper.PageHelper;
 import com.xjs.demo.mybatis.mapper.UserMapper;
 import com.xjs.demo.po.pojo.User;
 import com.xjs.demo.service.UserService;
@@ -16,8 +17,8 @@ public class UserServiceImp implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public List<User> getList() {
-
+    public List<User> getList(int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
         return userMapper.selectByExample(null);
     }
 
