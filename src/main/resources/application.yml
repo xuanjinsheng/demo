@@ -2,6 +2,25 @@ spring:
   profiles:
     active: dev #默认为开发环境
 
+  mail:
+    host: smtp.126.com
+    username: xuanjinshengz@126.com
+    password: xuan0407
+    default-encoding: utf-8
+    properties:
+       mail.smtp.socketFactory.fallback: true
+       mail.smtp.starttls.enable: true
+
+#        mail:
+#          debug:
+#            true
+#          smtp:
+#            ssl:
+#              enable:true
+#          socketFactory:
+#            class: javax.net.ssl.SSLSocketFactory
+
+
 server:
   port: 1234
 
@@ -39,3 +58,5 @@ pagehelper:
   #数据库方言
   helper-dialect: mysql
   reasonable: true
+
+

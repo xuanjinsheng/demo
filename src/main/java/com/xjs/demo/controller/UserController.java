@@ -3,6 +3,7 @@ package com.xjs.demo.controller;
 import com.xjs.demo.commontResult.ResultGenerator;
 import com.xjs.demo.po.pojo.User;
 import com.xjs.demo.service.UserService;
+import com.xjs.demo.util.TestEmail;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class UserController {
     @Autowired
     private UserService userService;
     private Logger logger = Logger.getLogger(String.valueOf(this.getClass()));
+    private TestEmail tests;
+
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     @ApiOperation(value = "新增用户",  httpMethod = "POST", produces = "application/json")
@@ -27,6 +30,7 @@ public class UserController {
         int i = userService.insertUser(user);
         logger.info("新增用户");
         if(i == 1){
+            tests.send();
             return ResultGenerator.genSuccessResult("添加成功");
         }else {
             return ResultGenerator.genFailResult("新增失败");
