@@ -1,6 +1,7 @@
 package com.xjs.demo.service.Imp;
 
 import com.github.pagehelper.PageHelper;
+import com.xjs.demo.commontResult.ResultGenerator;
 import com.xjs.demo.mybatis.mapper.UserMapper;
 import com.xjs.demo.po.pojo.User;
 import com.xjs.demo.service.UserService;
@@ -52,5 +53,19 @@ public class UserServiceImp implements UserService {
     public String getUserInfoByUsername(String username) {
         User user = userMapper.selectByUsername(username);
         return user.getPassword();
+    }
+
+    @Override
+    public User getUserByUsernameAndPassword(String username, String password) throws Exception {
+        if(username != null && password != null){
+            User  user = userMapper.selectByUsernameAndPassword(username, password);
+            if (user != null) {
+                return user;
+            }else {
+                return null;
+            }
+        }else {
+            throw new Exception("用户名或密码不能为空");
+        }
     }
 }

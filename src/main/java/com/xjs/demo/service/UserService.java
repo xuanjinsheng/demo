@@ -37,4 +37,12 @@ public interface UserService {
      */
     String getUserInfoByUsername(String username);
 
+    /**
+     * 根据用户名和密码查询用户
+     * @param username
+     * @param password
+     * @return
+     */
+    User getUserByUsernameAndPassword(String username, String password) throws Exception;
+
 }

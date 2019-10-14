@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.logging.Logger;
 
+@CrossOrigin
 @RestController
 @Api(value = "TestController", tags = {"测试示例"})
 public class TestController {
@@ -22,9 +23,9 @@ public class TestController {
     private Logger logger = Logger.getLogger(String.valueOf(this.getClass()));
     private TestEmail tests;
 
-    @RequestMapping( value = "/get/{pageNum}/{pageSize}",method = RequestMethod.GET)
+    @RequestMapping( value = "/get/list",method = RequestMethod.GET)
     @ApiOperation(value = "获取所有用户", httpMethod = "GET", produces = "application/json")
-    public Object userList(@PathVariable int pageNum, @PathVariable int pageSize){
+    public Object userList(@RequestParam int pageNum, @RequestParam int pageSize){
         List<User> user = userService.getList(pageNum, pageSize);
         logger.info("获取所有用户");
         return ResultGenerator.genSuccessResult(user);
